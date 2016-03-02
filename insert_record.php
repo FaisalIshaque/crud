@@ -1,7 +1,8 @@
 <?php
-
+	$message = "";
+	session_start();
+	
 // Start the session
-session_start();
 
 
 if(!$_POST)
@@ -23,14 +24,19 @@ if(!$_POST)
 		$flag = false;
 
         $message = "Please enter your full name";
-		echo "<script type='text/javascript'>alert('$message');</script>";
+        $_SESSION['err_msg_NameNull'] = $message;
+        header("Location: register.php");
+		//echo "<script type='text/javascript'>alert('$message');</script>";
 	}
 
 	else if(!preg_match('/^[A-Za-z ]+$/',$Fname)){
 		$flag = false;
 
 		$message = "Name can contain alphabets and space only";
-		echo "<script type='text/javascript'>alert('$message');</script>";
+		$_SESSION['err_msg_Name'] = $message;
+        header("Location: register.php");
+
+		//echo "<script type='text/javascript'>alert('$message');</script>";
 	}
 
 //Email Validation
@@ -38,14 +44,20 @@ if(!$_POST)
 		$flag = false;
 
 		$message = "Please enter your email address";
-		echo "<script type='text/javascript'>alert('$message');</script>";
+		$_SESSION['err_msg_EmailNull'] = $message;
+        header("Location: register.php");
+
+		//echo "<script type='text/javascript'>alert('$message');</script>";
 	}
 	
 	else if(!preg_match('/^([0-9a-zA-Z]([-_\\.]*[0-9a-zA-Z]+)*)@([0-9a-zA-Z]([-_\\.]*[0-9a-zA-Z]+)*)[\\.]([a-z]{2,4})$/',$Email)){
 		$flag = false;
 		
 		$message = "The format for email address is incorrect";
-		echo "<script type='text/javascript'>alert('$message');</script>";
+        $_SESSION['err_msg_Email'] = $message;
+        header("Location: register.php");
+
+		//echo "<script type='text/javascript'>alert('$message');</script>";
 	}
 
 //Pword Validation  
@@ -54,14 +66,20 @@ if(!$_POST)
 		$flag = false;
 
 		$message = "Please enter a password";
-		echo "<script type='text/javascript'>alert('$message');</script>";
+		$_SESSION['err_msg_PassNull'] = $message;
+        header("Location: register.php");
+
+		//echo "<script type='text/javascript'>alert('$message');</script>";
 	}
 
 	else if(!preg_match('/^[a-z0-9]+[.$%^&*()!@_a-z0-9]{5,9}$/',$Pword)){
 		$flag = false;
 
 		$message = "Password must be 6 to 10 characters. First character must be a letter";
-		echo "<script type='text/javascript'>alert('$message');</script>";
+		$_SESSION['err_msg_Pass'] = $message;
+        header("Location: register.php");
+
+		//echo "<script type='text/javascript'>alert('$message');</script>";
 	}
 
 	else {
