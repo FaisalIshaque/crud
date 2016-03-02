@@ -1,4 +1,9 @@
 <?php
+
+// Start the session
+session_start();
+
+
 if(!$_POST)
 	header("Location: home.php");
 	
@@ -9,7 +14,7 @@ if(!$_POST)
 	$Pword = $_POST['Pass_Word'];
 
 	$flag = true;
-	$message = "";
+
 
 //Fname Validation
 
@@ -17,54 +22,49 @@ if(!$_POST)
 	if($Fname == "" || is_null($Fname)){
 		$flag = false;
 
-        $message = $message . "Please enter your full name";
-		//echo "<script type='text/javascript'>alert('$message');</script>";
+        $message = "Please enter your full name";
+		echo "<script type='text/javascript'>alert('$message');</script>";
 	}
 
-	if(!preg_match('/^[A-Za-z ]+$/',$Fname)){
+	else if(!preg_match('/^[A-Za-z ]+$/',$Fname)){
 		$flag = false;
 
-		$message=  $message . "</br>Name can contain alphabets and space only";
-		//echo "<script type='text/javascript'>alert('$message');</script>";
+		$message = "Name can contain alphabets and space only";
+		echo "<script type='text/javascript'>alert('$message');</script>";
 	}
 
 //Email Validation
-	if($Email == "" || is_null($Email)){
+	else if($Email == "" || is_null($Email)){
 		$flag = false;
 
-		//$message+= "Please enter your email address";
-		//echo "<script type='text/javascript'>alert('$message');</script>";
+		$message = "Please enter your email address";
+		echo "<script type='text/javascript'>alert('$message');</script>";
 	}
 	
-	if(!preg_match('/^([0-9a-zA-Z]([-_\\.]*[0-9a-zA-Z]+)*)@([0-9a-zA-Z]([-_\\.]*[0-9a-zA-Z]+)*)[\\.]([a-z]{2,4})$/',$Email)){
+	else if(!preg_match('/^([0-9a-zA-Z]([-_\\.]*[0-9a-zA-Z]+)*)@([0-9a-zA-Z]([-_\\.]*[0-9a-zA-Z]+)*)[\\.]([a-z]{2,4})$/',$Email)){
 		$flag = false;
 		
-		//$message+= "The format for email address is incorrect";
-		//echo "<script type='text/javascript'>alert('$message');</script>";
+		$message = "The format for email address is incorrect";
+		echo "<script type='text/javascript'>alert('$message');</script>";
 	}
 
 //Pword Validation  
 	
-	if($Pword == "" || is_null($Pword)){
+	else if($Pword == "" || is_null($Pword)){
 		$flag = false;
 
-		//$message+= "Please enter a password";
-		//echo "<script type='text/javascript'>alert('$message');</script>";
+		$message = "Please enter a password";
+		echo "<script type='text/javascript'>alert('$message');</script>";
 	}
 
-	if(!preg_match('/^[a-z0-9]+[.$%^&*()!@_a-z0-9]{5,9}$/',$Pword)){
+	else if(!preg_match('/^[a-z0-9]+[.$%^&*()!@_a-z0-9]{5,9}$/',$Pword)){
 		$flag = false;
 
-		//$message += "Password must be 6 to 10 characters. First character must be a letter";
-		//echo "<script type='text/javascript'>alert('$message');</script>";
+		$message = "Password must be 6 to 10 characters. First character must be a letter";
+		echo "<script type='text/javascript'>alert('$message');</script>";
 	}
 
-	if ( $flag == false)
-	{
-		echo "<script type='text/javascript'>alert('$message');</script>";	
-	}
-
-	if ($flag == true) {
+	else {
 		# code...
 	
 
@@ -96,6 +96,4 @@ if(!$_POST)
 	header("Location: home.php");
 
 	}
-
-
 ?>

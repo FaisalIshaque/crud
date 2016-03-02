@@ -8,7 +8,7 @@
 
 <!DOCTYPE html>
 <html>
-<script src="registration_validation.js"></script>
+<!-- <script src="registration_validation.js"></script> -->
 <body>
 <title>Add User</title>
 
