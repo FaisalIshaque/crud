@@ -18,73 +18,73 @@ if(!$_POST)
 
 
 //Fname Validation
-
-
 	if($Fname == "" || is_null($Fname)){
 		$flag = false;
 
-        $message = "Please enter your full name";
+        $message = "Please enter your full name<br/>";
         $_SESSION['err_msg_NameNull'] = $message;
         header("Location: register.php");
 		//echo "<script type='text/javascript'>alert('$message');</script>";
 	}
 
-	else if(!preg_match('/^[A-Za-z ]+$/',$Fname)){
+	if(!preg_match('/^[A-Za-z ]+$/',$Fname)){
 		$flag = false;
 
 		$message = "Name can contain alphabets and space only";
 		$_SESSION['err_msg_Name'] = $message;
         header("Location: register.php");
+		//echo "<script type='text/javascript'>alert('$message');</script>";
+	}
 
+//UName Validation
+	if($Uname == "" || is_null($Uname)){
+		$flag = false;
+
+        $message = "Please enter a User Name";
+        $_SESSION['err_msg_UNameNull'] = $message;
+        header("Location: register.php");
 		//echo "<script type='text/javascript'>alert('$message');</script>";
 	}
 
 //Email Validation
-	else if($Email == "" || is_null($Email)){
+	if($Email == "" || is_null($Email)){
 		$flag = false;
 
-		$message = "Please enter your email address";
+		$message = "Please enter your email address<br/>";
 		$_SESSION['err_msg_EmailNull'] = $message;
         header("Location: register.php");
-
 		//echo "<script type='text/javascript'>alert('$message');</script>";
 	}
 	
-	else if(!preg_match('/^([0-9a-zA-Z]([-_\\.]*[0-9a-zA-Z]+)*)@([0-9a-zA-Z]([-_\\.]*[0-9a-zA-Z]+)*)[\\.]([a-z]{2,4})$/',$Email)){
+	if(!preg_match('/^([0-9a-zA-Z]([-_\\.]*[0-9a-zA-Z]+)*)@([0-9a-zA-Z]([-_\\.]*[0-9a-zA-Z]+)*)[\\.]([a-z]{2,4})$/',$Email)){
 		$flag = false;
 		
 		$message = "The format for email address is incorrect";
         $_SESSION['err_msg_Email'] = $message;
         header("Location: register.php");
-
 		//echo "<script type='text/javascript'>alert('$message');</script>";
 	}
 
 //Pword Validation  
-	
-	else if($Pword == "" || is_null($Pword)){
+	if($Pword == "" || is_null($Pword)){
 		$flag = false;
 
-		$message = "Please enter a password";
+		$message = "Please enter a password<br/>";
 		$_SESSION['err_msg_PassNull'] = $message;
         header("Location: register.php");
-
 		//echo "<script type='text/javascript'>alert('$message');</script>";
 	}
 
-	else if(!preg_match('/^[a-z0-9]+[.$%^&*()!@_a-z0-9]{5,9}$/',$Pword)){
+	if(!preg_match('/^[a-z0-9]+[.$%^&*()!@_a-z0-9]{5,9}$/',$Pword)){
 		$flag = false;
 
 		$message = "Password must be 6 to 10 characters. First character must be a letter";
 		$_SESSION['err_msg_Pass'] = $message;
         header("Location: register.php");
-
 		//echo "<script type='text/javascript'>alert('$message');</script>";
 	}
 
 	else {
-		# code...
-	
 
 	//PHP database (MySQL) interaction in 5 steps
 
